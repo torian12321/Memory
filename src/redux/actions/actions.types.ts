@@ -1,0 +1,5 @@
+export const PROFILES_RESET = "PROFILES_RESET";
+export const PROFILES_ADD = "PROFILES_ADD";
+
+export const BOARD_RESET = "BOARD_RESET";
+export const BOARD_SET_TILES = "BOARD_SET_TILES";
