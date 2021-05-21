@@ -1,19 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getBoardDiscoveries } from '../../redux/selectors/board.selectors';
+import { endGame } from '../../redux/actions';
 import { AppState } from '../../redux/reducers';
 import Footer from './Footer';
-import { Props } from './Footer.interfaces';
+import { Props, State } from './Footer.interfaces';
 
-const mapState = (state: AppState): Props => {
-  const discoveries = getBoardDiscoveries(state);
-  return {
-  // tiles: getBoardTiles(state),
-  score: discoveries.length * 100,
-  }
-};
+const mapState = (state: AppState): Props => ({
+  iniTime: state.game.iniTime,
+  score: getBoardDiscoveries(state).length * 100,
+});
+
+const mapDispatchToProps = (dispatch: Function): State => ({
+  onTimeEnds: () => dispatch(endGame),
+});
 
 export default connect(
   mapState,
-  {},
+  mapDispatchToProps,
 )(React.memo(Footer));

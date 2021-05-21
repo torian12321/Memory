@@ -1,14 +1,26 @@
-import React from 'react';
-import { Props } from './Footer.interfaces';
+import React, { useEffect, useState } from 'react';
+import { Props, State } from './Footer.interfaces';
 import { Wrapper } from './Footer.styles';
 
-const Footer: React.FunctionComponent<Props> = ({
-  className,
+const Footer: React.FunctionComponent<Props & State> = ({
+  iniTime,
   score = 0,
-}: Props) => {
+  onTimeEnds,
+}: Props & State) => {
+  const [counter, setCounter] = React.useState(60);
+  // const [counter, setCounter] = React.useState(60);
+
+  React.useEffect(() => {
+    counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
+
+    if (counter === 0 && onTimeEnds) {
+      onTimeEnds();
+    };
+  }, [counter]);
+
   return (
-    <Wrapper className={className}>
-      <div>Time: 60 sec</div>
+    <Wrapper>
+      <div>Time: {counter} sec</div>
       <div>Score: {score}</div>
     </Wrapper>
   );
