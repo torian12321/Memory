@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import { Board } from '../components/Board';
+import { Footer } from '../components/Footer';
+import { Header } from '../components/Header';
 import { Props, State } from './App.interfaces';
-import './App.module.css';
+import { Wrapper, Body } from './App.styles';
 
 const App: React.FunctionComponent<Props & State> = ({ onLoad }) => {
   useEffect(() => {
@@ -9,11 +11,13 @@ const App: React.FunctionComponent<Props & State> = ({ onLoad }) => {
   }, [onLoad]);
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <Wrapper>
+      <Header />
+      <Body> 
         <Board />
-      </header>
-    </div>
+      </Body>
+      <Footer />
+    </Wrapper>
   );
 }
 
