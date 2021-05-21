@@ -7,19 +7,21 @@ import styles from './Tile.module.scss';
 const Tile: React.FunctionComponent<Props & State> = ({
   id,
   isSelected = false,
+  isDiscovered = false,
   onClick = (e: Event) => {},
 }: Props & State) => {
   const handleClick = () => {
-    if (!isSelected && onClick) {
+    if (!isSelected && !isDiscovered && onClick) {
       onClick();
-    }
-  }
+    };
+  };
+
   return (
     <button
       onClick={handleClick}
       className={classNames(
         styles.wrapper,
-        // isFlipped && styles.flipped,
+        isDiscovered && styles.discovered,
         isSelected && styles.selected,
       )}
     >

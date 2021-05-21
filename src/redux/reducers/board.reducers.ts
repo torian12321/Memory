@@ -26,7 +26,7 @@ const reducer = (state = initialState, action: State & Action) => {
 
     case ACTIONS.BOARD_SELECT_TILE:
         const { tileId = '' }: any = action.payload;
-        const { tileSelected1, tileSelected2} = state;
+        const { tileSelected1, tileSelected2 } = state;
 
         if(tileSelected1 === undefined) {
           return {
@@ -44,6 +44,17 @@ const reducer = (state = initialState, action: State & Action) => {
         }
         return state;
         
+
+    case ACTIONS.BOARD_ADD_DISCOVERED:
+      const { profileId = '' }: any = action.payload;
+
+      return {
+        ...state,
+        profilesDiscovered: [
+          ...state.profilesDiscovered,
+          profileId,
+        ],
+      };
 
     case ACTIONS.BOARD_CLEAR_SELECTIONS:
         return {

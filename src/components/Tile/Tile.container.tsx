@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getTileById } from '../../redux/selectors/board.selectors';
 import { AppState } from '../../redux/reducers';
-import { boardSelectTile } from '../../redux/actions/board.actions';
+import { clickTile } from '../../redux/actions/board.actions';
 import Tile from './Tile';
 import { Props, State } from './Tile.interfaces';
 
@@ -13,12 +13,11 @@ const mapState = (state: AppState, ownProps: Props): Props => {
     id: tile.id,
     index: ownProps.index,
     isSelected: tile.isSelected,
-    // isFlipped: tile.flipped,
-    // isSelected: tile.selected,
+    isDiscovered: tile.isDiscovered,
   };
 };
 const mapDispatchToProps = (dispatch: Function, ownProps: Props): State => ({
-  onClick: () => dispatch(boardSelectTile(ownProps.index))
+  onClick: () => dispatch(clickTile(ownProps.index))
 });
 
 export default connect(

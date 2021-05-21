@@ -1,7 +1,7 @@
 export interface Props {
   id: string,
   index: number,
-  // isFlipped?: boolean,
+  isDiscovered?: boolean,
   isSelected?: boolean,
 };
 
