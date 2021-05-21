@@ -1,9 +1,8 @@
 import { createSelector } from 'reselect';
 import { AppState } from '../reducers';
-import { State as StateProfiles } from '../reducers/profiles.reducers';
+import { State as StateProfiles, Profile } from '../reducers/profiles.reducers';
 
-const getProfilesState = (state: AppState): any =>
-// const getProfilesState = (state: AppState): StateProfiles =>
+const getProfilesState = (state: AppState): StateProfiles =>
   state.profiles || state || {};
 
 export const getProfileIds = createSelector(
@@ -11,3 +10,12 @@ export const getProfileIds = createSelector(
   (profiles: StateProfiles): string[] =>
   profiles.allIds || []
 );
+
+const getById = createSelector(
+  getProfilesState,
+  (profiles: StateProfiles): {[key: string]: Profile} =>
+  profiles.byIds || {}
+);
+
+export const getProfileById = (state: AppState, id: string): Profile =>
+  getById(state)[id];
