@@ -38,7 +38,7 @@ export const clickTile = (titleId: number) => (
 ) => {
   const state = getState();
   const selections = getBoardSelections(state);
-  const selectionsCount = selections.filter((sel) => sel !== null);
+  const selectionsCount = selections.filter((sel) => sel != null);
 
   if (selectionsCount.length === 0) {
     dispatch(boardSelectTile(titleId));
