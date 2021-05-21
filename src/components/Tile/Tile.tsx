@@ -6,10 +6,13 @@ import styles from './Tile.module.scss';
 
 const Tile: React.FunctionComponent<Props & State> = ({
   id,
+  isSelected = false,
   onClick = (e: Event) => {},
 }: Props & State) => {
   const handleClick = () => {
-    onClick();
+    if (!isSelected && onClick) {
+      onClick();
+    }
   }
   return (
     <button
@@ -17,7 +20,7 @@ const Tile: React.FunctionComponent<Props & State> = ({
       className={classNames(
         styles.wrapper,
         // isFlipped && styles.flipped,
-        // isSelected && styles.selected,
+        isSelected && styles.selected,
       )}
     >
       <div

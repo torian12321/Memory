@@ -12,17 +12,20 @@ export const getBoardTiles = createSelector(
   board.tiles || []
 );
 
+export const getBoardSelections = createSelector(
+  getBoard,
+  (board: StateBoard): any[] =>
+  [board.tileSelected1, board.tileSelected2]
+);
+
 
 export const getTileById = (state: AppState, id: number): any => {
   const tiles = getBoardTiles(state);
-  const tile = tiles[id];
-
-  const profile = getProfileById(state, tile);
-  console.log('------------');
-  console.log(profile);
+  const selections = getBoardSelections(state);
 
   return {
-    ...profile,
+    ...getProfileById(state, tiles[id]),
+    isSelected: selections.includes(id),
   }
 }
 

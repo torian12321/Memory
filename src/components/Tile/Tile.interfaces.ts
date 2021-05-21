@@ -2,7 +2,7 @@ export interface Props {
   id: string,
   index: number,
   // isFlipped?: boolean,
-  // isSelected?: boolean,
+  isSelected?: boolean,
 };
 
 export interface State {
