@@ -14,6 +14,7 @@ const mapState = (state: AppState, ownProps: Props): Props => {
     index: ownProps.index,
     isSelected: tile.isSelected,
     isDiscovered: tile.isDiscovered,
+    imgUrl: tile.imgUrl,
   };
 };
 const mapDispatchToProps = (dispatch: Function, ownProps: Props): State => ({

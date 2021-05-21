@@ -1,8 +1,7 @@
 import React from 'react';
-import classNames from 'classnames';
 import Tile from '../Tile';
 import { Props, State } from './Board.interfaces';
-import styles from './Board.module.scss';
+import { Wrapper } from './Board.styles';
 
 const Board: React.FunctionComponent<Props & State> = ({
   className,
@@ -13,9 +12,9 @@ const Board: React.FunctionComponent<Props & State> = ({
   );
 
   return (
-    <div className={classNames(styles.board, className)}>
+    <Wrapper className={className}>
       {renderTiles()}
-    </div>
+    </Wrapper>
   );
 };
 

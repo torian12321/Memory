@@ -3,6 +3,7 @@ export interface Props {
   index: number,
   isDiscovered?: boolean,
   isSelected?: boolean,
+  imgUrl?: string,
 };
 
 export interface State {

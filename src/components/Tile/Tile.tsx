@@ -1,43 +1,38 @@
 import React from 'react';
-import classNames from 'classnames';
 import { Props, State } from './Tile.interfaces';
-import styles from './Tile.module.scss';
-
+import { Wrapper, Panel, CardFront, CardBack, Box1, Box2 } from './Tile.styles';
 
 const Tile: React.FunctionComponent<Props & State> = ({
   id,
   isSelected = false,
   isDiscovered = false,
+  imgUrl = '',
   onClick = (e: Event) => {},
 }: Props & State) => {
+  const active = (!isSelected && !isDiscovered);
+
   const handleClick = () => {
-    if (!isSelected && !isDiscovered && onClick) {
+    if (active && onClick) {
       onClick();
     };
   };
 
   return (
-    <button
+    <Wrapper
       onClick={handleClick}
-      className={classNames(
-        styles.wrapper,
-        isDiscovered && styles.discovered,
-        isSelected && styles.selected,
-      )}
+      active={active}
+      isDiscovered={isDiscovered}
+      
     >
-      <div
-        aria-label={`tile-${id}`}
-        className={styles.panel}
-      >
-        {id}
-        <div className={styles.front}>
-          <div className={styles.box1} />
-        </div>
-        <div className={styles.back}>
-          <div className={styles.box2} />
-        </div>
-      </div>
-    </button>
+      <Panel aria-label={`tile-${id}`}>
+        <CardFront>
+          <Box1 imgUrl={imgUrl} />
+        </CardFront>
+        <CardBack>
+          <Box2 />
+        </CardBack>
+      </Panel>
+    </Wrapper>
   );
 };
 
