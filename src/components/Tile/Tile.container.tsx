@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getTileById } from '../../redux/selectors/board.selectors';
 import { AppState } from '../../redux/reducers';
-import { clickTile } from '../../redux/actions/board.actions';
+import { clickTile } from '../../redux/actions';
 import Tile from './Tile';
 import { Props, State } from './Tile.interfaces';
 
