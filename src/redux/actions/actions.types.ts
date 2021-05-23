@@ -1,5 +1,7 @@
 export const GAME_INICIATE_TIMER = "GAME_INICIATE_TIMER";
 export const GAME_ADD_VICTORY = "GAME_ADD_VICTORY";
+export const GAME_RESUME = "GAME_RESUME";
+export const GAME_PAUSE = "GAME_PAUSE";
 
 export const PROFILES_RESET = "PROFILES_RESET";
 export const PROFILES_ADD = "PROFILES_ADD";

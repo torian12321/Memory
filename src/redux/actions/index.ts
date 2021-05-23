@@ -1,5 +1,5 @@
 import { fetchProfiles } from './profiles.actions';
-import { gameIniTimer } from './game.actions';
+import { gameIniTimer, gameResume, gamePause } from './game.actions';
 import {
   boardReset,
   boardSetTiles,
@@ -37,13 +37,15 @@ export const iniGame = () => (
   dispatch: Dispatch,
 ) => {
   dispatch(iniBoard());
-  dispatch(gameIniTimer())
+  dispatch(gameIniTimer());
+  dispatch(gameResume());
 };
 
 export const endGame = () => (
   dispatch: Dispatch,
 ) => {
   console.log('Game Overrrrr');
+  dispatch(gamePause());
 };
 
 export const iniApp = () => (
