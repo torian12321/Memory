@@ -1,22 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Props, State } from './Footer.interfaces';
 import { Wrapper } from './Footer.styles';
 
 const Footer: React.FunctionComponent<Props & State> = ({
-  iniTime,
+  gamePaused = false,
   score = 0,
   onTimeEnds,
 }: Props & State) => {
-  const [counter, setCounter] = React.useState(60);
-  // const [counter, setCounter] = React.useState(60);
+  const [counter, setCounter] = useState(60);
 
   React.useEffect(() => {
-    counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
+    counter > 0 && setTimeout(() => {
+      if(!gamePaused) {
+        setCounter(counter - 1);
+      };
+    }, 1000);
 
+    console.log('counter', counter);
     if (counter === 0 && onTimeEnds) {
       onTimeEnds();
     };
-  }, [counter]);
+  }, [counter, gamePaused, onTimeEnds]);
 
   return (
     <Wrapper>

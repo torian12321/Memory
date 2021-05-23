@@ -3,7 +3,7 @@ import { AppState } from '../reducers';
 import { getProfileById } from '../selectors/profiles.selectors';
 import { State as StateBoard } from '../reducers/board.reducers';
 
-const getBoard = (state: AppState): any =>
+const getBoard = (state: AppState): StateBoard =>
   state.board || state || {};
 
 export const getBoardTiles = createSelector(

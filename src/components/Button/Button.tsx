@@ -1,7 +1,6 @@
 import React from 'react';
 import { Props } from './Button.interfaces';
 import { Btn } from './Button.styles';
-import { on } from 'cluster';
 
 const Button: React.FunctionComponent<Props> = ({
   className,

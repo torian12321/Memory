@@ -1,5 +1,6 @@
 export interface Props {
   className?: string,
+  gamePaused?: boolean,
   iniTime?: Date,
   score?: number,
 };
