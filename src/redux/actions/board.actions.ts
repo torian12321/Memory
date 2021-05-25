@@ -1,12 +1,10 @@
-import { Action, Dispatch} from '../common';
-import { AppState } from '../reducers';
+import { Action } from '../common';
 import * as ACTIONS from './actions.types';
-import { getTileById, getBoardSelections } from '../selectors/board.selectors';
 
-export const boardReset = () => ({
+export const boardReset = (): Action => ({
   type: ACTIONS.BOARD_RESET,
 });
-export const boardClearSelections = () => ({
+export const boardClearSelections = (): Action => ({
   type: ACTIONS.BOARD_CLEAR_SELECTIONS,
 });
 
@@ -31,27 +29,3 @@ export const boardSelectTile = (tileId: number): Action => ({
     tileId,
   },
 });
-
-export const clickTile = (titleId: number) => (
-  dispatch: Dispatch,
-  getState: () => AppState
-) => {
-  const state = getState();
-  const selections = getBoardSelections(state);
-  const selectionsCount = selections.filter((sel) => sel != null);
-
-  if (selectionsCount.length === 0) {
-    dispatch(boardSelectTile(titleId));
-  } else if (selectionsCount.length === 1) {
-    const selection1 = getTileById(state, selectionsCount[0]);
-    const selection2 = getTileById(state, titleId);
-
-    if (selection1.id === selection2.id) {
-      dispatch(boardAddDiscovered(selection1.id));
-    };
-
-    dispatch(boardSelectTile(titleId));
-
-    setTimeout(() => dispatch(boardClearSelections()), 1000);
-  };
-};

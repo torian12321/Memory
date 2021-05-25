@@ -3,7 +3,7 @@ import { AppState } from '../reducers';
 import { getProfileById } from '../selectors/profiles.selectors';
 import { State as StateBoard } from '../reducers/board.reducers';
 
-const getBoard = (state: AppState): any =>
+const getBoard = (state: AppState): StateBoard =>
   state.board || state || {};
 
 export const getBoardTiles = createSelector(
@@ -22,6 +22,16 @@ export const getBoardDiscoveries = createSelector(
   getBoard,
   (board: StateBoard): any[] =>
   board.profilesDiscovered || []
+);
+export const getScore = createSelector(
+  getBoardDiscoveries,
+  (discoveries): number =>
+    discoveries.length * 100,
+);
+export const getTotalPairs = createSelector(
+  getBoard,
+  (board): number =>
+    board.totalPairs
 );
 
 export const getTileById = (state: AppState, id: number): any=> {

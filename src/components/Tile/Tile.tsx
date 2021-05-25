@@ -7,7 +7,7 @@ const Tile: React.FunctionComponent<Props & State> = ({
   isSelected = false,
   isDiscovered = false,
   imgUrl = '',
-  onClick = (e: Event) => {},
+  onClick = () => {},
 }: Props & State) => {
   const active = (!isSelected && !isDiscovered);
 
@@ -22,7 +22,6 @@ const Tile: React.FunctionComponent<Props & State> = ({
       onClick={handleClick}
       active={active}
       isDiscovered={isDiscovered}
-      
     >
       <Panel aria-label={`tile-${id}`}>
         <CardFront>

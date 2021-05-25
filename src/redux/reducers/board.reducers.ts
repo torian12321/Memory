@@ -1,11 +1,12 @@
 import * as ACTIONS from '../actions/actions.types';
-import { Action } from '.';
+import { Action } from '../common';
 
 export interface State {
   tiles: string[],
   tileSelected1?: string,
   tileSelected2?: string,
   profilesDiscovered: string[],
+  totalPairs: number,
 }
 
 const initialState: State = {
@@ -13,6 +14,7 @@ const initialState: State = {
   tileSelected1: undefined,
   tileSelected2: undefined,
   profilesDiscovered: [],
+  totalPairs: 2,
 };
 
 const reducer = (state = initialState, action: State & Action) => {

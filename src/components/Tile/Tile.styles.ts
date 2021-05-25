@@ -40,9 +40,6 @@ export const Box1: any = styled(Box)`
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url("${(props: any) => props.imgUrl }");
-  // &:hover {
-  //   background: var(--color-main-dark);
-  // }  
 `;
 export const Box2 = styled(Box)`
   background: var(--color-sec);
