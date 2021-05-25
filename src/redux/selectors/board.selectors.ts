@@ -28,6 +28,11 @@ export const getScore = createSelector(
   (discoveries): number =>
     discoveries.length * 100,
 );
+export const getTotalPairs = createSelector(
+  getBoard,
+  (board): number =>
+    board.totalPairs
+);
 
 export const getTileById = (state: AppState, id: number): any=> {
   const tiles = getBoardTiles(state);

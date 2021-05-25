@@ -16,7 +16,6 @@ const Footer: React.FunctionComponent<Props & State> = ({
       };
     }, 1000);
 
-    console.log('counter', counter);
     if (counter === 0 && onTimeEnds) {
       onTimeEnds();
     };

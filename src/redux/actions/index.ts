@@ -10,7 +10,12 @@ import {
 } from './board.actions';
 import { Dispatch } from '../common';
 import { AppState } from '../reducers';
-import { getTileById, getBoardSelections, getBoardDiscoveries } from '../selectors/board.selectors';
+import {
+  getTileById,
+  getBoardSelections,
+  getBoardDiscoveries,
+  getTotalPairs,
+} from '../selectors/board.selectors';
 import { getProfileIds } from '../selectors/profiles.selectors';
 
 const suffleArray = (arr: any[] = []): any[] =>
@@ -23,12 +28,13 @@ export const iniBoard = () => (
 ): any => {
   const state= getState();
   const ids = getProfileIds(state);
+  const totalTiles = getTotalPairs(state);
 
   // Clear previous board
   dispatch(boardReset());
 
   // randomly get 6 profiles
-  const selectedIds = suffleArray(ids).slice(0, 6);
+  const selectedIds = suffleArray(ids).slice(0, totalTiles);
 
   // Duplicate each id, and set the board after suffle
   dispatch(boardSetTiles(suffleArray(selectedIds.concat(selectedIds))));
@@ -46,7 +52,6 @@ export const iniGame = () => (
 export const endGame = () => (
   dispatch: Dispatch,
 ) => {
-  console.log('Game Overrrrr');
   dispatch(gamePause());
   dispatch(modalOpen('finalScore'));
 };
@@ -75,9 +80,10 @@ export const clickTile = (titleId: number) => (
     const selection2 = getTileById(state, titleId);
 
     if (selection1.id === selection2.id) {
+      const totalTiles = getTotalPairs(state);
       dispatch(boardAddDiscovered(selection1.id));
 
-      if(getBoardDiscoveries(state).length === 5) {
+      if(getBoardDiscoveries(state).length === (totalTiles - 1)) {
         dispatch(endGame());
       };
     };
