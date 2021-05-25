@@ -1,5 +1,5 @@
 import * as ACTIONS from '../actions/actions.types';
-import { Action } from '.';
+import { Action } from '../common';
 
 export interface Profile {
   id: string,
