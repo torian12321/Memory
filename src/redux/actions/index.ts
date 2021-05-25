@@ -1,5 +1,6 @@
 import { fetchProfiles } from './profiles.actions';
 import { gameIniTimer, gameResume, gamePause } from './game.actions';
+import { modalOpen, modalClose } from './modals.actions';
 import {
   boardReset,
   boardSetTiles,
@@ -36,6 +37,7 @@ export const iniBoard = () => (
 export const iniGame = () => (
   dispatch: Dispatch,
 ) => {
+  dispatch(modalClose('finalScore'));
   dispatch(iniBoard());
   dispatch(gameIniTimer());
   dispatch(gameResume());
@@ -46,6 +48,7 @@ export const endGame = () => (
 ) => {
   console.log('Game Overrrrr');
   dispatch(gamePause());
+  dispatch(modalOpen('finalScore'));
 };
 
 export const iniApp = () => (

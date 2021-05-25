@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getGame } from '../../redux/selectors/game.selectors';
-import { getBoardDiscoveries } from '../../redux/selectors/board.selectors';
+import { getScore } from '../../redux/selectors/board.selectors';
 import { endGame } from '../../redux/actions';
 import { AppState } from '../../redux/reducers';
 import Footer from './Footer';
@@ -12,7 +12,7 @@ const mapState = (state: AppState): Props => {
   return {
     iniTime,
     gamePaused: paused,
-    score: getBoardDiscoveries(state).length * 100,
+    score: getScore(state),
   }
 };
 

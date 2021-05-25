@@ -8,7 +8,7 @@ export const Btn = styled.button`
   font-weight: bold;
   background: var(--color-sec);
   color: #222;
-
+  margin: 20px 0 0;
   &:hover {
     background: var(--color-sec-darker);
   }

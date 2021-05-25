@@ -23,6 +23,11 @@ export const getBoardDiscoveries = createSelector(
   (board: StateBoard): any[] =>
   board.profilesDiscovered || []
 );
+export const getScore = createSelector(
+  getBoardDiscoveries,
+  (discoveries): number =>
+    discoveries.length * 100,
+);
 
 export const getTileById = (state: AppState, id: number): any=> {
   const tiles = getBoardTiles(state);

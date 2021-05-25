@@ -19,20 +19,18 @@ const initialStateModal: Modal = {
 };
 
 const reducer = (state = initialState, action: State & Action) => {
-  const { modalName }: any = action.payload;
-
   switch (action.type) {
     case ACTIONS.MODAL_REGISTER:
-
+      const { modalName: name }: any = action.payload;
       return {
         ...state,
-        [modalName]: {
+        [name]: {
           ...initialStateModal,
-          name: modalName,
+          name,
         }
       };
     case ACTIONS.MODAL_TOGGLE:
-      const { open = false }: any = action.payload;
+      const { modalName, open = false }: any = action.payload;
       const modal = state[modalName] || {};
       
       return {
