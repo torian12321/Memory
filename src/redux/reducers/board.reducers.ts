@@ -14,7 +14,7 @@ const initialState: State = {
   tileSelected1: undefined,
   tileSelected2: undefined,
   profilesDiscovered: [],
-  totalPairs: 2,
+  totalPairs: 6,
 };
 
 const reducer = (state = initialState, action: State & Action) => {
