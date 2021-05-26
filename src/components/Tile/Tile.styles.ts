@@ -54,6 +54,9 @@ export const Wrapper: any = styled.button`
   min-height: 1em;
   min-width: 1em;
   font-size: 80px;
+  @media (min-width: 480px) {
+    font-size: 120px;
+  }
 
   margin: 0;
   padding: 0;
